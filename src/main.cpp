@@ -98,10 +98,10 @@ static Eigen::VectorXd current_state(Eigen::VectorXd &state,
     double cte = polyeval(coeffs, 0);  // px = 0, py = 0
     double epsi = -atan(coeffs[1]);  // p
 
-    // Get the state after latency time:
-    const double dt = 0.1;	//Latency time
-    const double Lf = 2.67;
-    const double late_px = v * dt;
+    //State after latency time:
+  const double dt = 0.1;	//Latency time
+  const double Lf = 2.67;
+  const double late_px = v * dt;
 	const double late_py = 0.0;
 	const double late_psi = v / Lf * (-steer) * dt;
 	const double late_v = v + acc * dt;

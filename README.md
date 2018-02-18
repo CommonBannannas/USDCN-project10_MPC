@@ -3,6 +3,50 @@ Self-Driving Car Engineer Nanodegree Program
 
 ---
 
+[//]: # (Image References)
+
+[image1]: ./model.png "Model"
+[image1]: ./racing.png "Racing"
+
+
+## Rubric Points and reflection:
+
+**Model**
+The Model predictive control algorithm requires a mathematical model to estimate
+the kinematics of a vehicle, the kinematic model is a simplification of a real dynamic model,
+it is a robust estimator since it can generalize well to any kind of vehicle (car,
+truck, van).
+
+The kinematic model is constructed by a set of equations that describe the vehicle's state,
+it includes the vehicle coordinates (x, y), the orientation angle, the velocity,
+the cross track error and the orientation error.
+
+The actuator of the model outputs the velocity and the steering angle, then the model uses
+the previous timestep actuations to calculate a new state.
+
+![alt text][image1]
+
+**Timestep Length and Elapsed Duration (N & dt):**
+The timestep length param and elapsed duration was 8 and 0.1, this was hand tuned
+evaluating the behavior of the car, I wanted my car to go really fast (100mph top speed on track )
+so by trial and error I chose those parameters. I started with the recommended values of 10 and 0.1
+but it led to an unstable MPC because of the high speed.
+
+**Polynomial Fitting and MPC Preprocessing**
+The X and Y waypoints are processed transforming them to the vehicle's frame of reference. This
+transformation simplifies the calculations because x and y are now (0, 0) and the orientation angle
+is also 0.
+
+ **Model Predictive Control with Latency**
+ To handle the actuators latency as in real life, I used two methods:
+
+ First I used a delay for the MPC when predicting the new state to take into account the latency.
+ Then I regularized the CTE, epsi, difference between velocity and a reference velocity, delta, acceleration,
+ change in delta, change in acceleration and the combination of velocity and steering.
+ In this way I achieved a stable controller and a high speed on the track!
+
+
+
 ## Dependencies
 
 * cmake >= 3.5
