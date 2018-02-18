@@ -6,7 +6,7 @@ Self-Driving Car Engineer Nanodegree Program
 [//]: # (Image References)
 
 [image1]: ./model.png "Model"
-[image1]: ./racing.png "Racing"
+[image2]: ./racing.png "Racing"
 
 
 ## Rubric Points and reflection:
@@ -45,7 +45,7 @@ is also 0.
  change in delta, change in acceleration and the combination of velocity and steering.
  In this way I achieved a stable controller and a high speed on the track!
 
-
+![alt text][image2]
 
 ## Dependencies
 
